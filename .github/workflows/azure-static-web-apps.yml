@@ -25,3 +25,5 @@ jobs:
           action: upload
           app_location: "Main file/secur-html"  # folder that contains index.html
           output_location: "/"                  # no build output; pure static
+
+
