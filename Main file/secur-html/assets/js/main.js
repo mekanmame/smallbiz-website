@@ -395,7 +395,7 @@
     var invalidCls = "is-invalid";
     var $email = '[name="email"]';
     var $validation =
-        '[name="name"],[name="email"],[name="subject"],[name="number"],[name="message"]'; // Must be use (,) without any space
+        '[name="name"],[name="email"],[name="subject"],[name="message"]'; // Must be use (,) without any space
     var formMessages = $(".form-messages");
 
     function sendContact() {
@@ -413,12 +413,16 @@
                     // Make sure that the formMessages div has the 'success' class.
                     formMessages.removeClass("error");
                     formMessages.addClass("success");
-                    // Set the message text.
-                    formMessages.text(response);
+                    // Set the message text (Web3Forms returns JSON: {success, message}).
+                    var successText =
+                        response && response.message
+                            ? response.message
+                            : "Thank you! Your message has been sent.";
+                    formMessages.text(successText);
                     // Clear the form.
                     $(
                         form +
-                            ' input:not([type="submit"]),' +
+                            ' input:not([type="submit"],[type="hidden"]),' +
                             form +
                             " textarea"
                     ).val("");
@@ -427,14 +431,16 @@
                     // Make sure that the formMessages div has the 'error' class.
                     formMessages.removeClass("success");
                     formMessages.addClass("error");
-                    // Set the message text.
-                    if (data.responseText !== "") {
-                        formMessages.html(data.responseText);
-                    } else {
-                        formMessages.html(
-                            "Oops! An error occured and your message could not be sent."
-                        );
-                    }
+                    // Set the message text (Web3Forms returns JSON: {success, message}).
+                    var errorText =
+                        "Oops! An error occured and your message could not be sent.";
+                    try {
+                        var parsed = JSON.parse(data.responseText);
+                        if (parsed && parsed.message) {
+                            errorText = parsed.message;
+                        }
+                    } catch (e) {}
+                    formMessages.html(errorText);
                 });
         }
     }
