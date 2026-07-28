@@ -4,7 +4,7 @@
 <path d="M20 12.2C22.6 12.2 24.7 14.3 24.7 16.9C24.7 18.9 23.4 20.6 21.6 21.3L23.6 30.6H16.4L18.4 21.3C16.6 20.6 15.3 18.9 15.3 16.9C15.3 14.3 17.4 12.2 20 12.2Z" fill="black"/>
 </mask>
 <g mask="url(#cg-shield-mask)">
-<rect x="-2" y="-2" width="44" height="48" fill="#3C72FC"/>
+<rect x="-2" y="-2" width="44" height="48" fill="#A9803F"/>
 </g>
-<text x="50" y="29" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF" letter-spacing="0.2">CoreGuard<tspan font-weight="400" fill="#8D96AD"> Solutions</tspan></text>
+<text x="50" y="29" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" fill="#0B2545" letter-spacing="0.2">CoreGuard<tspan font-weight="400" fill="#6B7688"> Solutions</tspan></text>
 </svg>
